@@ -1,3 +1,4 @@
 # Overview  
 
-In this project I conducted exploratory data analysis on a dataset of chemical properties and quality of red wines.
+In this project I wrangled OpenStreetMap data of Santiago, Chile, created an SQL database with it, and then analyzed the data
+using SQL queries.
