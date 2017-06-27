@@ -1,0 +1,42 @@
+# table function to get the count of a categorical variable
+https://www.r-bloggers.com/how-to-get-the-frequency-table-of-a-categorical-variable-as-a-data-frame-in-r/
+
+# Fixing boxplot error
+http://stackoverflow.com/questions/35681614/error-when-making-a-simple-boxplot-with-ggplot2
+
+# Reminding myself what 'skewed right' means
+http://www.itl.nist.gov/div898/handbook/eda/section3/histogr6.htm
+
+# Chemical compounds in wine
+https://www.washingtonpost.com/news/speaking-of-science/wp/2015/07/21/the-chemistry-that-makes-your-wine-taste-good-or-bad/?utm_term=.e46d0ee68c8d
+
+# Video on the chemical properties of wine
+https://www.youtube.com/watch?v=_UaS743_aEs
+
+# Greg Cook, NDSU on the chemical properties wine
+https://www.youtube.com/watch?v=ivMewfj3WLE
+
+# Fixed acidity
+http://waterhouse.ucdavis.edu/whats-in-wine/fixed-acidity
+
+# Volatile acidity
+http://waterhouse.ucdavis.edu/whats-in-wine/volatile-acidity
+
+# Minor components of wine
+http://waterhouse.ucdavis.edu/whats-in-wine/red-wine-composition
+
+# Sulfates in wine
+http://www.aromadictionary.com/articles/sulfurdioxide_article.html
+
+# Adding axis labels in ggplot2
+http://stackoverflow.com/questions/10438752/adding-x-and-y-axis-labels-in-ggplot2
+
+# Center plot title
+http://stackoverflow.com/questions/40675778/center-plot-title-in-ggplot2
+
+# Change font sizes
+http://stackoverflow.com/questions/14942681/change-size-of-axes-title-and-labels-in-ggplot2
+
+# Dealing with error message while knitting
+http://stackoverflow.com/questions/9689104/installing-r-on-mac-warning-messages-setting-lc-ctype-failed-using-c
+
