@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+  		<script src="http://d3js.org/d3.v3.min.js"></script>
+  		<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+      <style>
+      circle.dimple-series-0 {
+        fill: rgb(0, 102, 204);
+        stroke: rgb(0, 102, 204);
+      }
+
+      h2 {
+        text-align: center;
+      }
+    </style>
+  		<script type="text/javascript">
+  		function draw(data) {
+  			console.log(data);
+  			// margin setup
+  			"use strict";
+          	var margin = 75,
+              width = 1400 - margin,
+              height = 600 - margin;
+
+            // title
+            d3.select("body")
+            .append("h2")
+            .text("Relationship between a car's weight and miles per gallon")
+
+            // svg setup
+            var svg = d3.select('body')
+            	.append('svg')
+            		.attr('width', width + margin)
+            		.attr('height', height + margin)
+            	.append('g')
+            		.attr('class', 'chart');
+
+            // chart construction
+            var myChart = new dimple.chart(svg, data);
+            var x = myChart.addMeasureAxis('x', 'wt');
+            var y = myChart.addMeasureAxis('y', 'mpg');
+            myChart.addSeries('model', dimple.plot.bubble);
+            myChart.draw();
+
+        
+  		};
+  		</script>
+</head>
+<body>
+	<script type="text/javascript">
+	// load data
+	d3.csv('mtcars.csv', function(d) {
+		d['wt'] = +d['wt'];
+		d['mpg'] = +d['mpg'];
+		return d;
+	}, draw);
+	</script>
+</body>
+</html>

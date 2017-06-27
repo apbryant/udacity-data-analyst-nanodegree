@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <script src='http://d3js.org/d3.v3.min.js'></script>
+  <script src='http://dimplejs.org/dist/dimple.v2.0.0.min.js'></script>
+  <style>  
+    h2 {
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+  </style>
+  <script type='text/javascript'>
+  	function draw(data) {
+  		// margin setup
+  		'use strict';
+      var margin = 75,
+      width = 1400 - margin,
+      height = 600 - margin;
+
+      // title
+      d3.select('body')
+      .append('h2')
+      .text('Relationship between a the weight of a car in tons ' + 
+          'and miles per gallon colored by the number of engine cylinders');
+
+      d3.select('body')
+        .append('h3')
+        .text('(click button to switch charts)');
+
+      // svg setup
+      var svg = d3.select('body')
+        .append('svg')
+        .attr('width', width + margin)
+        .attr('height', height + margin)
+        .append('g')
+        .attr('class', 'chart');
+
+      // chart construction
+      var myChart = new dimple.chart(svg, data);
+      var x = myChart.addMeasureAxis('x', 'wt');
+      var y = myChart.addMeasureAxis('y', 'mpg');
+      myChart.addSeries('model', dimple.plot.bubble);
+      d3.select('h2')
+        .text('Relationship between the weight of a car in tons ' + 
+          'and miles per gallon');
+      myChart.draw();
+      d3.selectAll('.dimple-series-0')
+        .attr('fill', '#81BEF7')
+        .attr('stroke', '#81BEF7')
+        .attr('fill-opacity', 0.6);
+            
+      // create textbox for clicks
+      var textBox = d3.select('svg')
+        .append('g');
+
+      textBox.append('rect')
+        .attr('x', 600)
+        .attr('y', 0)
+        .attr('width', 100)
+        .attr('height', 50)
+        .attr('fill', 'white')
+        .attr('stroke', 'black');
+
+      textBox.append('text')
+        .text('click here')
+        .attr('x', 620)
+        .attr('y', 27)
+        .attr('fill', 'black')
+        .attr('font-size', '14px');
+
+      // change chart on click            
+      var chartNumber = 1;
+      d3.select('rect').on('click', function() {
+        if(chartNumber == 0) {
+          var myChart = new dimple.chart(svg, data);
+          var x = myChart.addMeasureAxis('x', 'wt');
+          var y = myChart.addMeasureAxis('y', 'mpg');
+          myChart.addSeries('model', dimple.plot.bubble);
+          d3.selectAll('.dimple-legend')
+            .remove();
+          d3.select('h2')
+            .text('Relationship between the weight of a car in tons ' + 
+              'and miles per gallon');
+          d3.selectAll('.dimple-series-0')
+            .attr('fill', '#81BEF7')
+            .attr('stroke', '#81BEF7')
+            .attr('fill-opacity', 0.6);
+          chartNumber++;
+        } else {
+          var myChart = new dimple.chart(svg, data);
+          var x = myChart.addMeasureAxis('x', 'wt');
+          var y = myChart.addMeasureAxis('y', 'mpg');
+          myChart.addSeries(['model', 'cyl'], dimple.plot.bubble);
+          myChart.addLegend(1050, 20, 200, 100, 'right');
+          d3.select('h2')
+          .text('Relationship between a the weight of a car in tons ' + 
+          'and miles per gallon colored by the number of engine cylinders');
+          myChart.draw();
+          chartNumber--;
+        };
+
+      });
+
+  	};
+  </script>
+</head>
+<body>
+	<script type='text/javascript'>
+	// load data
+	d3.csv('mtcars.csv', function(d) {
+		d['wt'] = +d['wt'];
+		d['mpg'] = +d['mpg'];
+		return d;
+	}, draw);
+	</script>
+</body>
+</html>
